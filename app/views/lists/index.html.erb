@@ -8,10 +8,14 @@
       <div class="d-flex">
         <% @lists.each do |list| %>
           <div class="card m-3" style="width: 18rem;">
+            <% if list.photo.attached? %>
+            <%= cl_image_tag list.photo.key, class:"card-img-top" %>
+            <% else %>
             <img src="https://www.tvupdates.in/wp-content/uploads/2023/12/rDJegQJaCyGaYysj2g5XWY-1200-80.jpg" class="card-img-top" alt="...">
+            <% end %>
             <div class="card-body">
               <h5 class="card-title fs-2 text fw-bolder"><%= list.name %></h5>
-              <a href="/lists/2" class="btn btn-primary">See bookmarks</a>
+              <%= link_to "See bookmarks", list_path(list), class:"btn btn-primary"%>
             </div>
           </div>
         <% end %>
